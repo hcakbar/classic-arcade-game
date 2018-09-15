@@ -1,4 +1,4 @@
-# classic-arcade-game
+# Classic Arcade Game
 
 ## Why This Game Project?
 Games have a lot of objects and those objects do a lot of different things; but sometimes they do some very similar things as well. This creates a great opportunity to practice object-oriented programming, an important programming paradigm that influences your application architecture and provides performance optimization.
