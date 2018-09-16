@@ -1,3 +1,4 @@
+'use strict';
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -22,14 +23,32 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
+var Player = function() {
+
+}
 // This class requires an update(), render() and
+Player.prototype.update = function () {
+    return this;
+}
+
+Player.prototype.render = function () {
+
+}
 // a handleInput() method.
 
 
 // Now instantiate your objects.
+let enemy1;
+let enemy2;
+let enemy3;
+let enemy4;
+let enemy5;
+let enemy6;
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+let allEnemies = [];
 
+// Place the player object in a variable called player
+let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
