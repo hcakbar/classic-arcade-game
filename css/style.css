@@ -1,3 +1,14 @@
 body {
     text-align: center;
 }
+
+ul {
+    margin-bottom: -40px;
+}
+
+ul li {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
