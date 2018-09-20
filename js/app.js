@@ -44,6 +44,8 @@ Enemy.prototype.render = function() {
 var Player = function (x, y) {
     this.x = x;
     this.y = y;
+    this.width = 50;
+    this.height = 85;
     this.sprite = 'images/char-boy.png';
     level++;
 }

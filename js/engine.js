@@ -79,7 +79,35 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    let lives = 3;
+    const livesContainer = document.querySelector(".lives");
+    const levelContainer = document.querySelector(".level");
+    livesContainer.innerHTML = lives;
+    function checkCollisions() {
+
+        allEnemies.forEach(function (enemy) {
+            if(player.x < enemy.x + enemy.width && player.x + player.width > enemy.x &&
+                player.y < enemy.y + enemy.height && player.height + player.y > enemy.y) {
+
+                lives--;
+                level++;
+                livesContainer.innerHTML == lives;
+                levelContainer.innerHTML == level;
+
+                //reset set player position
+                player.y = 400;
+
+                //game over
+                if(lives === 0) {
+                    //TODO game over modal
+                    alert('Game Over');
+                    reset();
+                }
+            }
+        })
     }
 
     /* This is called by the update function and loops through all of the
@@ -93,7 +121,11 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        if(player.update() < 0) {
+            player.y == 400;
+
+            level++;
+        }
     }
 
     /* This function initially draws the "game level", it will then call
@@ -117,7 +149,7 @@ var Engine = (function(global) {
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Before drawing, clear existing canvas
         ctx.clearRect(0,0,canvas.width,canvas.height)
 
@@ -161,7 +193,10 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        lives = 3;
+        level = 1;
+        livesContainer.innerHTML = lives;
+        levelContainer.innerHTML = level;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
