@@ -126,10 +126,11 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        if(player.update() < 0) {
+        if(player.update() < -35) {
             //setting player position back and increasing a level
             player.y = 400;
             level++;
+            levelContainer.innerHTML = level;
         }
     }
 
@@ -198,8 +199,8 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        lives = 3;
         level = 1;
+        lives = 3;
         livesContainer.innerHTML = lives;
         levelContainer.innerHTML = level;
     }

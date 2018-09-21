@@ -20,21 +20,14 @@ Enemy.prototype.update = function (dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    //seting speed based on game level
-    if (level === 1) {
-        for (let i = 0; i < allEnemies.length; i++) {
-            allEnemies[i].speed = 150;
-        }
-    } else if (level === 2) {
-        for (let i = 0; i < allEnemies.length; i++) {
-            allEnemies[i].speed = 250;
-        }
-    } else if (level === 3) {
-        for (let i = 0; i < allEnemies.length; i++) {
-            allEnemies[i].speed = 350;
-        }
+    //setting speed based on game level
+    this.speed = getRandomNumber(1, 5);
+
+    if (this.x > 600) {
+        this.x = -100;
+    } else {
+        this.x += 100 * this.speed * dt;
     }
-    this.x = this.x + (this.speed * dt);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -105,3 +98,9 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function getRandomNumber(ninNum, maxNum) {
+    ninNum = Math.ceil(ninNum);
+    maxNum = Math.floor(maxNum);
+    return Math.floor(Math.random() * (maxNum - ninNum)) + ninNum;
+}
