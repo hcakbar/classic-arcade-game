@@ -82,32 +82,37 @@ var Engine = (function(global) {
         checkCollisions();
     }
 
-    let lives = 3;
-    const livesContainer = document.querySelector(".lives");
-    const levelContainer = document.querySelector(".level");
-    livesContainer.innerHTML = lives;
+    const levelContainer = document.querySelector('.level');
     function checkCollisions() {
 
         allEnemies.forEach(function (enemy) {
             if(player.x < enemy.x + enemy.width && player.x + player.width > enemy.x &&
                 player.y < enemy.y + enemy.height && player.height + player.y > enemy.y) {
-
-                lives--;
+                resetPlayerPosition();
+            } else {
                 level++;
-                livesContainer.innerHTML == lives;
-                levelContainer.innerHTML == level;
-
-                //reset set player position
-                player.y = 400;
-
-                //game over
-                if(lives === 0) {
-                    //TODO game over modal
-                    alert('Game Over');
-                    reset();
-                }
+                livesContainer.innerHTML = lives;
             }
-        })
+        });
+    }
+
+    let lives = 3;
+    const livesContainer = document.querySelector('.lives');
+    function resetPlayerPosition() {
+
+        //reset lives
+        lives--;
+        levelContainer.innerHTML = level;
+
+        //reset set player position
+        player.y = 400;
+
+        //game over
+        if(lives === 0) {
+            //TODO game over modal
+            alert('Game Over');
+            reset();
+        }
     }
 
     /* This is called by the update function and loops through all of the
@@ -122,8 +127,8 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         if(player.update() < 0) {
-            player.y == 400;
-
+            //setting player position back and increasing a level
+            player.y = 400;
             level++;
         }
     }

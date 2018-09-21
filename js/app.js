@@ -8,6 +8,8 @@ var Enemy = function (x, y) {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
+    this.width = 50;
+    this.height = 85;
     this.sprite = 'images/enemy-bug.png';
 };
 
