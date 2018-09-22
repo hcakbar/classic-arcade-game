@@ -13,6 +13,7 @@ In this game have a Player and Enemies (bugs). The goal of the player is to reac
 * Once the player reaches the water (i.e., the top of the game board), the game is won
 
 ### How to Play?
+* Play here: [Classic Arcade Game - Buggy](https://hcakbar.github.io/classic-arcade-game/)
 * Once you have downloaded/cloned this project, run the index.html and game should run.
 * Use keyboard arrow key (left, right, up, and down) to move the player.
 * Avoid enemy (bugs) and reach to water will increase level and speed.
