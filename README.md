@@ -13,11 +13,11 @@ In this game have a Player and Enemies (bugs). The goal of the player is to reac
 * Once the player reaches the water (i.e., the top of the game board), the game is won
 
 ### How to Play?
-* TODO
-
-
-
-
+* Once you have downloaded/cloned this project, run the index.html and game should run.
+* Use keyboard arrow key (left, right, up, and down) to move the player.
+* Avoid enemy (bugs) and reach to water will increase level and speed.
+* Collide with an enemy (bugs) will reduce lives.
+* If lose all lives, game over.
 
 ##### Resources:
 
