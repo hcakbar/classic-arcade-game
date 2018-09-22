@@ -89,9 +89,6 @@ var Engine = (function(global) {
             if(player.x < enemy.x + enemy.width && player.x + player.width > enemy.x &&
                 player.y < enemy.y + enemy.height && player.height + player.y > enemy.y) {
                 resetPlayerPosition();
-            } else {
-                level++;
-                livesContainer.innerHTML = lives;
             }
         });
     }
@@ -99,10 +96,9 @@ var Engine = (function(global) {
     let lives = 3;
     const livesContainer = document.querySelector('.lives');
     function resetPlayerPosition() {
-
         //reset lives
         lives--;
-        levelContainer.innerHTML = level;
+        livesContainer.innerHTML = lives;
 
         //reset set player position
         player.y = 400;
@@ -126,12 +122,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        if(player.update() < -35) {
-            //setting player position back and increasing a level
-            player.y = 400;
-            level++;
-            levelContainer.innerHTML = level;
-        }
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -190,7 +181,6 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
         player.render();
     }
 
@@ -199,7 +189,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        level = 1;
+        level = 0;
         lives = 3;
         livesContainer.innerHTML = lives;
         levelContainer.innerHTML = level;

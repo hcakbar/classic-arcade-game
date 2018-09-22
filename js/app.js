@@ -21,7 +21,7 @@ Enemy.prototype.update = function (dt) {
     // all computers.
 
     //setting speed based on game level
-    this.speed = getRandomNumber(1, 5);
+    this.speed = getRandomNumber(level, 5);
 
     if (this.x > 600) {
         this.x = -100;
@@ -45,8 +45,19 @@ var Player = function (x, y) {
     level++;
 }
 // This class requires an update(), render() and
+const levelContainer = document.querySelector('.level');
 Player.prototype.update = function (dt) {
-    return this.y;
+    if(this.y < -35) {
+        //setting player position back and increasing a level
+        player.y = 400;
+        level++;
+        levelContainer.innerHTML = level;
+        if(level === 4) {
+            alert('Congratulation: You Win! Completed level: ' + (level -1));
+            level = 0;
+            levelContainer.innerHTML = level;
+        }
+    }
 }
 
 Player.prototype.render = function () {
@@ -56,17 +67,16 @@ Player.prototype.render = function () {
 
 
 // Now instantiate your objects.
-let enemy1 = new Enemy(0, 50);
-let enemy2 = new Enemy(-350, 50);
+let enemy1 = new Enemy(0, 60);
+let enemy2 = new Enemy(-300, 60);
 let enemy3 = new Enemy(-200, 145);
-let enemy4 = new Enemy(-600, 145);
-let enemy5 = new Enemy(-1000, 145);
-let enemy6 = new Enemy(-450, 220);
-let enemy7 = new Enemy(-50, 220);
-let enemy8 = new Enemy(-800, 220);
+let enemy4 = new Enemy(-350, 230);
+let enemy5 = new Enemy(-0, 230);
+let enemy6 = new Enemy(350, 145);
+let enemy7 = new Enemy(150, 230);
 
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
+let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
 // Place the player object in a variable called player
 let player = new Player(200, 400);
