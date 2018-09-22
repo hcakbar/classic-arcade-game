@@ -105,8 +105,7 @@ var Engine = (function(global) {
 
         //game over
         if(lives === 0) {
-            //TODO game over modal
-            alert('Game Over');
+            alert('Game Over!');
             reset();
         }
     }

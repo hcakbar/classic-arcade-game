@@ -31,7 +31,7 @@ Enemy.prototype.update = function (dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -47,13 +47,14 @@ var Player = function (x, y) {
 // This class requires an update(), render() and
 const levelContainer = document.querySelector('.level');
 Player.prototype.update = function (dt) {
-    if(this.y < -35) {
+    if (this.y <= -25) {
         //setting player position back and increasing a level
         player.y = 400;
+
         level++;
         levelContainer.innerHTML = level;
-        if(level === 4) {
-            alert('Congratulation: You Win! Completed level: ' + (level -1));
+        if (level === 4) {
+            alert('Congratulation: You Win! Completed level: ' + (level - 1));
             level = 0;
             levelContainer.innerHTML = level;
         }
